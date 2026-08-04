@@ -38,6 +38,45 @@ header {
     gap: 20px;
 }
 
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a78bfa;
+}
+
+.section-subtitle {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.series {
+    background: rgba(139, 92, 246, 0.06);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 48px;
+}
+
+.series .project-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+.series .project-card:hover {
+    background: rgba(139, 92, 246, 0.12);
+}
+
+.other-projects .section-title {
+    color: #8a8a9e;
+}
+
 .project-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
