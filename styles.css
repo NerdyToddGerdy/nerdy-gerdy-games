@@ -110,14 +110,36 @@ header {
     line-height: 1.5;
 }
 
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
 .tag {
     display: inline-block;
-    background: rgba(139, 92, 246, 0.2);
-    color: #a78bfa;
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 0.8rem;
-    margin-top: 12px;
+}
+
+/* What the project is. */
+.tag-type {
+    background: rgba(139, 92, 246, 0.2);
+    color: #a78bfa;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+/* What it is for. */
+.tag-topic {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #9a9aae;
 }
 
 footer {
