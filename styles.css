@@ -52,13 +52,17 @@ img { max-width: 100%; }
     letter-spacing: -0.022em;
 }
 
-.lede-sub {
-    margin-top: 12px;
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+
+.badge {
     font-family: "Chivo Mono", monospace;
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 999px;
+    border: 1.5px solid var(--rule);
     color: var(--muted);
 }
 
