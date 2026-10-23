@@ -25,7 +25,7 @@ body {
 
 img { max-width: 100%; }
 
-.wrap { max-width: 780px; margin: 0 auto; padding: 64px 24px 80px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 64px 24px 80px; }
 
 /* ---------- header ---------- */
 
@@ -47,24 +47,13 @@ img { max-width: 100%; }
 .lede {
     font-family: "Bricolage Grotesque", system-ui, sans-serif;
     font-weight: 800;
-    font-size: clamp(1.7rem, 4.4vw, 2.35rem);
-    line-height: 1.08;
-    letter-spacing: -0.022em;
+    font-size: clamp(2rem, 5.2vw, 3.1rem);
+    line-height: 1.04;
+    letter-spacing: -0.026em;
+    text-wrap: balance;
 }
 
-.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-
-.badge {
-    font-family: "Chivo Mono", monospace;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 5px 11px;
-    border-radius: 999px;
-    border: 1.5px solid var(--rule);
-    color: var(--muted);
-}
+.terms { margin-top: 12px; color: var(--muted); font-size: 1.05rem; }
 
 .visually-hidden {
     position: absolute;
@@ -74,21 +63,22 @@ img { max-width: 100%; }
     white-space: nowrap;
 }
 
-/* ---------- section labels ---------- */
+/* ---------- headings ---------- */
 
-.eyebrow {
-    font-family: "Chivo Mono", monospace;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+h2, h3 {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    font-weight: 700;
 }
 
-.block-label { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
-.block-label .eyebrow { color: var(--muted); }
-.block-label::after { content: ""; flex: 1; height: 2px; background: var(--rule); }
+h2 { font-size: 1.5rem; letter-spacing: -0.018em; line-height: 1.2; }
 
-/* ---------- the signature: one outline, three panels ---------- */
+h3 { font-size: 1.22rem; letter-spacing: -0.014em; margin-bottom: 6px; }
+
+.section-title { margin: 0 0 20px; }
+
+section + section { margin-top: 64px; }
+
+/* ---------- the signature: GerdQuest, one outline around the series ---------- */
 
 .series {
     border: 2px solid var(--frog);
@@ -96,28 +86,23 @@ img { max-width: 100%; }
     background: var(--surface);
     box-shadow: 7px 7px 0 var(--shadow);
     overflow: hidden;
-    margin-bottom: 56px;
 }
 
 .series-head {
     padding: 20px 26px;
-    background: rgba(134, 173, 104, 0.18);
+    background: var(--frog-tint);
     border-bottom: 2px solid var(--frog);
 }
 
-.series-head .eyebrow { color: var(--frog); }
-
-.series-head p {
-    margin-top: 5px;
-    font-size: 0.95rem;
-    color: var(--muted);
-}
+.series-head h2 { color: var(--frog); }
+.series-head p { margin-top: 2px; color: var(--muted); font-size: 0.95rem; }
 
 .panel {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 24px 26px;
+    display: grid;
+    grid-template-columns: 224px 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 26px;
     text-decoration: none;
     color: inherit;
     border-top: 1px solid var(--rule);
@@ -125,33 +110,67 @@ img { max-width: 100%; }
 }
 
 .panel:first-of-type { border-top: none; }
-.panel:hover, .panel:focus-visible { background: var(--raised); }
+.panel:hover { background: var(--raised); }
 
-/* ---------- separate die-cut cards ---------- */
+/* ---------- screenshots ---------- */
 
-.cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.thumb {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1.5px solid var(--rule);
+    background: var(--field);
+}
 
-.card {
+/* ---------- more games: die-cut cards with the screenshot on top ---------- */
+
+.games { display: grid; gap: 24px; grid-template-columns: repeat(3, 1fr); }
+
+.game {
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 22px 24px;
+    flex-direction: column;
     text-decoration: none;
     color: inherit;
     background: var(--surface);
     border: 2px solid var(--rule);
     border-radius: 16px;
     box-shadow: 5px 5px 0 var(--shadow);
-    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    overflow: hidden;
+    transition: border-color 0.18s ease;
 }
 
-.card:hover, .card:focus-visible {
-    transform: translate(3px, 3px);
-    box-shadow: 2px 2px 0 var(--shadow);
-    border-color: var(--ember);
+.game:hover { border-color: var(--ember); }
+
+.game .thumb { border: none; border-radius: 0; border-bottom: 2px solid var(--rule); }
+
+.game .entry-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 20px 20px;
 }
 
-/* ---------- entry mark: frog = game, ember = tool ---------- */
+.game .tags { margin-top: auto; padding-top: 14px; }
+
+/* ---------- tools: compact rows, no screenshot ---------- */
+
+.tools { display: grid; gap: 0 32px; grid-template-columns: repeat(2, 1fr); }
+
+.tool {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 4px;
+    text-decoration: none;
+    color: inherit;
+    border-top: 2px solid var(--rule);
+}
+
+.tool h3 { margin-bottom: 2px; transition: color 0.18s ease; }
+.tool:hover h3 { color: var(--ember); }
 
 .mark {
     flex: none;
@@ -160,55 +179,43 @@ img { max-width: 100%; }
     border-radius: 12px;
     display: grid;
     place-items: center;
+    background: var(--ember-tint);
+    border: 1.5px solid var(--ember);
+    color: var(--ember);
 }
 
 .mark svg { width: 22px; height: 22px; }
 
-.mark-game { background: var(--frog-tint); border: 1.5px solid var(--frog); color: var(--frog); }
-.mark-tool { background: var(--ember-tint); border: 1.5px solid var(--ember); color: var(--ember); }
+/* ---------- shared entry innards ---------- */
 
-.row-body { min-width: 0; }
+.entry-body { min-width: 0; }
 
-/* ---------- shared card innards ---------- */
+.desc { color: var(--muted); font-size: 0.96rem; max-width: 58ch; }
 
-.panel h3, .card h3 {
-    font-family: "Bricolage Grotesque", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 1.22rem;
-    letter-spacing: -0.014em;
-    margin-bottom: 6px;
-}
-
-.panel p.desc, .card p.desc {
-    color: var(--muted);
-    font-size: 0.96rem;
-    max-width: 58ch;
-}
-
-.tags { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 
 .tag {
-    font-family: "Chivo Mono", monospace;
-    font-size: 0.67rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 4px 9px;
-    border-radius: 4px;
+    line-height: 1.3;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1.5px solid var(--rule);
+    color: var(--muted);
 }
 
-.tag-type  { color: var(--field); font-weight: 700; }
-.tag-game  { background: var(--frog); }
-.tag-tool  { background: var(--ember); }
-.tag-topic { border: 1.5px solid var(--rule); color: var(--muted); }
+.tag-note { border-color: var(--frog); color: var(--frog); }
+.tag-new  { border-color: var(--ember); background: var(--ember); color: var(--field); }
 
-.panel:focus-visible, .card:focus-visible {
+.panel:focus-visible, .game:focus-visible, .tool:focus-visible {
     outline: 3px solid var(--ember);
     outline-offset: 3px;
 }
 
+.panel:focus-visible { outline-offset: -5px; border-radius: 4px; }
+
 footer {
-    margin-top: 64px;
+    margin-top: 72px;
     padding-top: 22px;
     border-top: 2px solid var(--rule);
     display: flex;
@@ -222,12 +229,23 @@ footer {
 footer a { color: var(--ember); font-weight: 600; text-decoration: none; }
 footer a:hover { text-decoration: underline; }
 
+/* Three cards across stop fitting; switch to the same thumb-left rows as the series. */
+@media (max-width: 860px) {
+    .games { grid-template-columns: 1fr; gap: 18px; }
+    .game { display: grid; grid-template-columns: 224px 1fr; }
+    .game .thumb { height: 100%; border-bottom: none; border-right: 2px solid var(--rule); }
+    .tools { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 620px) {
     .masthead { flex-direction: column; align-items: flex-start; gap: 22px; }
     .masthead img { width: 156px; }
+    .panel { grid-template-columns: 1fr; gap: 14px; padding: 20px; }
+    .series-head { padding: 18px 20px; }
+    .game { display: flex; }
+    .game .thumb { height: auto; border-right: none; border-bottom: 2px solid var(--rule); }
 }
 
 @media (prefers-reduced-motion: reduce) {
     * { transition-duration: 0.01ms !important; }
-    .card:hover, .card:focus-visible { transform: none; }
 }
