@@ -155,6 +155,14 @@ section + section { margin-top: 64px; }
 
 .game .tags { margin-top: auto; padding-top: 14px; }
 
+/* ---------- featured: the newest game, one wide card above the series ---------- */
+
+.featured { display: grid; grid-template-columns: 3fr 2fr; }
+.featured .thumb { height: 100%; border-bottom: none; border-right: 2px solid var(--rule); }
+.featured .entry-body { justify-content: center; padding: 26px 30px; }
+.featured h3 { font-size: 1.6rem; }
+.featured .tags { margin-top: 0; }
+
 /* ---------- tools: compact rows, no screenshot ---------- */
 
 .tools { display: grid; gap: 0 32px; grid-template-columns: repeat(2, 1fr); }
@@ -232,7 +240,8 @@ footer a:hover { text-decoration: underline; }
 /* Three cards across stop fitting; switch to the same thumb-left rows as the series. */
 @media (max-width: 860px) {
     .games { grid-template-columns: 1fr; gap: 18px; }
-    .game { display: grid; grid-template-columns: 224px 1fr; }
+    .game, .featured { display: grid; grid-template-columns: 224px 1fr; }
+    .featured .entry-body { padding: 18px 20px 20px; }
     .game .thumb { height: 100%; border-bottom: none; border-right: 2px solid var(--rule); }
     .tools { grid-template-columns: 1fr; }
 }
